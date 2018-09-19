@@ -1,11 +1,13 @@
 import Base.show
 
+
 """Type abstrait dont d'autres types de noeuds dériveront.
 Nous n'avons pas typé la classe AbstractEdge ou Edge.
 Lorsqu'on attribut un type à la classe Edge, cela provoque un conflit avec
 le type de la classe Node."""
 abstract type AbstractEdge end
 # abstract type AbstractEdge{T} end
+
 
 """Type représentant les arêtes d'un graphe.
 L'information contenue dans une arête est les deux sommets qui sont lié pas

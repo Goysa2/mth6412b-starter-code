@@ -98,6 +98,7 @@ de 0 à n-1 (ce qui aurait été le cas en python)"""
 function read_edges(header::Dict{String}{String}, filename::String)
 
     edges = []
+    edges_data = []
     edge_weight_format = header["EDGE_WEIGHT_FORMAT"]
     known_edge_weight_formats = ["FULL_MATRIX", "UPPER_ROW", "LOWER_ROW",
     "UPPER_DIAG_ROW", "LOWER_DIAG_ROW", "UPPER_COL", "LOWER_COL",
@@ -122,7 +123,7 @@ function read_edges(header::Dict{String}{String}, filename::String)
             if line == "EDGE_WEIGHT_SECTION"
                 edge_weight_section = true
                 continue
-            end
+            end # if line == "EDGE_WEIGHT_SECTION"
 
             if edge_weight_section
                 data = split(line)
@@ -130,6 +131,7 @@ function read_edges(header::Dict{String}{String}, filename::String)
                 start = 0
                 while n_data > 0
                     n_on_this_line = min(n_to_read, n_data)
+
                     for j = start:start + n_on_this_line - 1
                         n_edges = n_edges + 1
                         if edge_weight_format in ["UPPER_ROW", "LOWER_COL"]
@@ -168,7 +170,7 @@ function read_edges(header::Dict{String}{String}, filename::String)
         end # if !flag
     end # for line in eachline
     close(file)
-    return edges
+    return edges, edges_data
 end
 
 """Renvoie les noeuds et les aretes du graphe
@@ -191,7 +193,7 @@ function read_stsp(filename::String)
     println("✓")
 
     Base.print("Reading of edges : ")
-    edges_brut = read_edges(header, filename)
+    edges_brut, edges_data = read_edges(header, filename)
     edges = []
     for k = 1 : dim
         edge_list = Any[]
@@ -218,15 +220,15 @@ function read_stsp(filename::String)
     end
     edges = edges_2
     println("✓")
-    return graph_nodes, edges
+    return graph_nodes, edges, edges_data
 end
 
 """Affiche un graphe étant données un ensemble de noeuds et d'arêtes.
 
 Exemple :
 
-        graph_nodes, edges = read_stsp("bayg29.tsp")
-        plot_graph(graph_nodes, edges)
+        graph_nodes, graph_edges = read_stsp("bayg29.tsp")
+        plot_graph(graph_nodes, graph_edges)
         savefig("bayg29.pdf")
 """
 function plot_graph(nodes, edges)
@@ -251,6 +253,6 @@ end
 
 """Fonction de commodité qui lit un fichier stsp et trace le graphe."""
 function plot_graph(filename::String)
-    graph_nodes, edges = read_stsp(filename)
-    plot_graph(graph_nodes, edges)
+    graph_nodes, graph_edges = read_stsp(filename)
+    plot_graph(graph_nodes, graph_edges)
 end

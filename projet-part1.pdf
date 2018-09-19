@@ -1,0 +1,489 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 5 0 R /F4 7 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (mailto:dominique.orban@polymtl.ca)
+>> /Border [ 0 0 0 ] /Rect [ 153.7323 680.0236 232.0923 692.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+5 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+6 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (http://www2.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95)
+>> /Border [ 0 0 0 ] /Rect [ 341.6703 500.0236 374.4603 512.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://docs.julialang.org/en/v1/manual/style-guide/index.html)
+>> /Border [ 0 0 0 ] /Rect [ 85.69291 221.0236 355.8129 233.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/Annots [ 4 0 R 6 0 R 8 0 R ] /Contents 17 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 16 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+10 0 obj
+<<
+/Outlines 12 0 R /PageLabels 18 0 R /PageMode /UseNone /Pages 16 0 R /Type /Catalog
+>>
+endobj
+11 0 obj
+<<
+/Author () /CreationDate (D:20180911233808+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20180911233808+05'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (MTH6412B : Projet voyageur de commerce \(phase 1\)) /Trapped /False
+>>
+endobj
+12 0 obj
+<<
+/Count 3 /First 13 0 R /Last 15 0 R /Type /Outlines
+>>
+endobj
+13 0 obj
+<<
+/Dest [ 9 0 R /XYZ 62.69291 635.0236 0 ] /Next 14 0 R /Parent 12 0 R /Title (Objectif)
+>>
+endobj
+14 0 obj
+<<
+/Dest [ 9 0 R /XYZ 62.69291 572.0236 0 ] /Next 15 0 R /Parent 12 0 R /Prev 13 0 R /Title (Marche \340 suivre)
+>>
+endobj
+15 0 obj
+<<
+/Dest [ 9 0 R /XYZ 62.69291 299.0236 0 ] /Parent 12 0 R /Prev 14 0 R /Title (Directives)
+>>
+endobj
+16 0 obj
+<<
+/Count 1 /Kids [ 9 0 R ] /Type /Pages
+>>
+endobj
+17 0 obj
+<<
+/Length 7631
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 28 Tm /F2 20 Tf 24 TL 32.10488 0 Td (MTH6412B : Projet voyageur de commerce) Tj T* 158.94 0 Td (\(phase 1\)) Tj T* -191.0449 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 692.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 48.03937 0 Td (Date:) Tj T* -48.03937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Mercredi 12 septembre 2018) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 677.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 39.14937 0 Td (auteur:) Tj T* -39.14937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 .501961 rg (Dominique Orban) Tj  T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 662.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 11.92937 0 Td (pond\351ration:) Tj T* -11.92937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (5%, travail en groupes de deux) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 647.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 37.46937 0 Td (remise:) Tj T* -37.46937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (le 19 septembre 2018) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 614.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Objectif) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 584.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.646235 Tw (La premi\350re partie du projet consiste \340 d\351finir de bonnes structures de donn\351es pour le probl\350me du) Tj T* 0 Tw (voyageur de commerce sym\351trique. Cette premi\350re partie est cruciale pour toute la suite.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 551.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Marche \340 suivre) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 539.0236 cm
+Q
+q
+1 0 0 1 62.69291 539.0236 cm
+Q
+q
+1 0 0 1 62.69291 491.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (1.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 38 Tm -0.116855 Tw 12 TL /F1 10 Tf 0 0 0 rg (R\351cup\351rer le code de la phase 1 sur le site web du cours. Vous y trouverez une structure de donn\351es) Tj T* 0 Tw .15186 Tw /F3 10 Tf 0 0 0 rg (Node) Tj /F1 10 Tf 0 0 0 rg ( pour les noeuds d'un graphe et ) Tj /F3 10 Tf 0 0 0 rg (Graph) Tj /F1 10 Tf 0 0 0 rg ( pour le graphe proprement dit. On fournit \351galement un) Tj T* 0 Tw 3.198735 Tw (jeu de fonctions qui lisent les fichiers au format de ) Tj 0 0 .501961 rg (TSPLib) Tj 0 0 0 rg (. On se limite ici aux probl\350mes) Tj T* 0 Tw (sym\351triques dont les poids sont donn\351s au format ) Tj /F3 10 Tf 0 0 0 rg (EXPLICIT) Tj /F1 10 Tf 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 485.0236 cm
+Q
+q
+1 0 0 1 62.69291 473.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (2.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Proposer un type ) Tj /F3 10 Tf 0 0 0 rg (Edge) Tj /F1 10 Tf 0 0 0 rg ( pour repr\351senter les ar\352tes d'un graphe.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 467.0236 cm
+Q
+q
+1 0 0 1 62.69291 443.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (3.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm 1.513735 Tw 12 TL /F1 10 Tf 0 0 0 rg (\311tendre le type ) Tj /F3 10 Tf 0 0 0 rg (Graph) Tj /F1 10 Tf 0 0 0 rg ( afin qu'un graphe contienne ses ar\352tes. On se limite ici aux graphes non) Tj T* 0 Tw (orient\351s. L'utilisateur doit pouvoir ajouter une ar\352te \340 la fois \340 un graphe.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 437.0236 cm
+Q
+q
+1 0 0 1 62.69291 413.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (4.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm -0.037515 Tw 12 TL /F1 10 Tf 0 0 0 rg (\311tendre la m\351thode d'affichage \() Tj /F3 10 Tf 0 0 0 rg (show) Tj /F1 10 Tf 0 0 0 rg (\) d'un objet de type ) Tj /F3 10 Tf 0 0 0 rg (Graph) Tj /F1 10 Tf 0 0 0 rg ( afin que les ar\352tes du graphe soient) Tj T* 0 Tw (\351galement affich\351es.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 407.0236 cm
+Q
+q
+1 0 0 1 62.69291 383.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (5.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm 1.585697 Tw 12 TL /F1 10 Tf 0 0 0 rg (\311tendre la fonction ) Tj /F3 10 Tf 0 0 0 rg (read_edges\(\)) Tj /F1 10 Tf 0 0 0 rg ( de ) Tj /F3 10 Tf 0 0 0 rg (read_stsp.jl) Tj /F1 10 Tf 0 0 0 rg ( afin de lire les poids des ar\352tes \(ils sont) Tj T* 0 Tw (actuellement ignor\351s\).) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 377.0236 cm
+Q
+q
+1 0 0 1 62.69291 353.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (6.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm -0.102515 Tw 12 TL /F1 10 Tf 0 0 0 rg (Fournir un programme principal qui lit une instance de TSP ) Tj /F4 10 Tf 0 0 0 rg (sym\351trique) Tj /F1 10 Tf 0 0 0 rg ( dont les poids sont donn\351s au) Tj T* 0 Tw (format ) Tj /F3 10 Tf 0 0 0 rg (EXPLICIT) Tj /F1 10 Tf 0 0 0 rg ( et construit un objet de type ) Tj /F3 10 Tf 0 0 0 rg (Graph) Tj /F1 10 Tf 0 0 0 rg ( correspondant.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 347.0236 cm
+Q
+q
+1 0 0 1 62.69291 311.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (7.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 26 Tm 1.703984 Tw 12 TL /F1 10 Tf 0 0 0 rg (Votre code doit \352tre disponible sur votre ) Tj /F4 10 Tf 0 0 0 rg (clone) Tj /F1 10 Tf 0 0 0 rg ( du d\351p\364t de d\351marrage sur Github. Indiquez son) Tj T* 0 Tw 1.009982 Tw (adresse dans votre rapport. En outre, votre rapport doit d\351montrer l'utilisation de votre programme) Tj T* 0 Tw (principal ainsi que ses r\351sultats.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 311.0236 cm
+Q
+q
+1 0 0 1 62.69291 278.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Directives) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 266.0236 cm
+Q
+q
+1 0 0 1 62.69291 266.0236 cm
+Q
+q
+1 0 0 1 62.69291 224.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 27 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 15 cm
+q
+BT 1 0 0 1 0 14 Tm .875697 Tw 12 TL /F1 10 Tf 0 0 0 rg (\311crire du code ) Tj /F2 10 Tf (lisible) Tj /F1 10 Tf (, a\351r\351, document\351 et comment\351. On pourra se reporter aux lignes directrices) Tj T* 0 Tw (pour la r\351daction de code Julia \340 l'adresse) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 .501961 rg (https://docs.julialang.org/en/v1/manual/style-guide/index.html) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 218.0236 cm
+Q
+q
+1 0 0 1 62.69291 182.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL .216136 Tw (Utilisez les constructions de programmation orient\351e objet autant que possible. Vous en tirerez profit) Tj T* 0 Tw .69784 Tw (par la suite. Le degr\351 d'utilisation des constructions de programmation orient\351e objet entre en ligne) Tj T* 0 Tw (de compte dans la notation.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 182.0236 cm
+Q
+ 
+endstream
+endobj
+18 0 obj
+<<
+/Nums [ 0 19 0 R ]
+>>
+endobj
+19 0 obj
+<<
+/S /D /St 1
+>>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000000073 00000 n 
+0000000134 00000 n 
+0000000241 00000 n 
+0000000353 00000 n 
+0000000538 00000 n 
+0000000643 00000 n 
+0000000860 00000 n 
+0000000975 00000 n 
+0000001189 00000 n 
+0000001424 00000 n 
+0000001530 00000 n 
+0000001838 00000 n 
+0000001912 00000 n 
+0000002021 00000 n 
+0000002153 00000 n 
+0000002264 00000 n 
+0000002324 00000 n 
+0000010007 00000 n 
+0000010048 00000 n 
+trailer
+<<
+/ID 
+[<2f9385e1712247ad7452e32c23c8bb3e><2f9385e1712247ad7452e32c23c8bb3e>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 11 0 R
+/Root 10 0 R
+/Size 20
+>>
+startxref
+10082
+%%EOF

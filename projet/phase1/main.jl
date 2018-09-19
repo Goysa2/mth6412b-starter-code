@@ -16,12 +16,11 @@ file = "../../instances/stsp/bayg29.tsp"
 # file = "../../instances/stsp/gr120.tsp"
 # file = "../../instances/stsp/pa561.tsp"
 
-
 ### On va chercher l'information utilisable des fichiers tsp grace à la fonction
 ### read_stsp. On va ensuite convertir cette information pour quelle soit utilisable
 ### par la classe graphe
 nodes_init, edges_init = read_stsp(file)
-#
+
 # ### Pour se simplifier la vie on met les sommet en ordre croissant
 nodes_init = sort(nodes_init)
 
@@ -33,6 +32,7 @@ edges_graph = Array{Edge, 1}()
 for node in nodes_init
     push!(nodes_graph, Node(string(node[1]), node[2]))
 end
+
 
 ### On ajoute les arêtes à notre graphe
 ### On a deux types de structures de matrices avec les poids:
@@ -52,6 +52,7 @@ for i = 1:length(edges_init)
         for j = 1:length(edges_init[i])
             push!(edges_graph, Edge(nodes_graph[i], nodes_graph[j], edge[j][2]))
         end
+
     end
 end
 
