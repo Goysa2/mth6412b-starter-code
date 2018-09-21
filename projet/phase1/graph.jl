@@ -17,7 +17,7 @@ Attention, tous les noeuds doivent avoir des données de même type.
 mutable struct Graph{T} <: AbstractGraph{T}
 	name :: String
 	nodes :: Vector{Node{T}}
-	edges :: Vector{Edge{T}}
+	edges :: Vector{Edge}
 end
 
 """Ajoute un noeud au graphe."""
@@ -27,7 +27,7 @@ function add_node!(graph::Graph{T}, node::Node{T}) where T
 end
 
 """Ajoute une arête au graphe."""
-function add_edge!(graph::Graph{T}, edge::Edge{T}) where T
+function add_edge!(graph::Graph{T}, edge::Edge) where T
 	push!(graph.edges, edge)
 	graph
 end
