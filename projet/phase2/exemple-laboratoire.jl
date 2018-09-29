@@ -1,0 +1,20 @@
+a = Node("a", 1)
+b = Node("b", 1)
+c = Node("c", 1)
+d = Node("d", 1)
+e = Node("e", 1)
+f = Node("f", 1)
+g = Node("g", 1)
+h = Node("h", 1)
+i = Node("i", 1)
+
+a_b = Edge(a, b, 4); a_h = Edge(a, h, 8)
+b_c = Edge(b, c, 8); b_h = Edge(b, h, 11)
+c_d = Edge(c, d, 7); c_f = Edge(c, f, 4); c_i = Edge(c, i, 2)
+d_e = Edge(d, e, 9); d_f = Edge(d, f, 14)
+e_f = Edge(e, f, 10)
+f_g = Edge(f, g, 2)
+g_h = Edge(g, h, 1)
+h_i = Edge(h, i, 7)
+
+exemple_graph = Graph("Note de cours", [a, b, c, d, e, f, g, h, i], [a_b, a_h, b_c, b_h, c_d, c_f, c_i, d_e, d_f, e_f, f_g, g_h, h_i]);
