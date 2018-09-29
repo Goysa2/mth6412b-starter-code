@@ -1,4 +1,6 @@
 import Base.show
+import Base.isempty
+import Base.merge
 
 """Type abstrait dont d'autres types de graphes dériveront."""
 abstract type AbstractGraph{T} end
@@ -17,6 +19,7 @@ Exemple :
 Attention, tous les noeuds doivent avoir des données de même type.
 """
 mutable struct Comp_connexe{T} <: AbstractGraph{T}
+	name :: String
 	nodes :: Vector{Node{T}}
 	edges :: Vector{Edge{T}}
 end
@@ -38,7 +41,7 @@ end
 # posséderont des champs `name` et `nodes`.
 
 # """Renvoie le nom du graphe."""
-# name(graph::AbstractGraph) = graph.name
+name(graph::AbstractGraph) = graph.name
 
 """Renvoie la liste des noeuds d'une composante connexe."""
 nodes(comp_connexe :: AbstractGraph) = comp_connexe.nodes
@@ -57,38 +60,57 @@ nb_edges(comp_connexe :: AbstractGraph) = length(comp_connexe.edges)
 pour un graphe également)"""
 function is_connected(comp_connexe :: AbstractGraph)
 	if (nb_nodes(comp_connexe) > 1) && (nb_edges(comp_connexe) == 0)
-		printstyled("plusieurs sommets, aucune arête \n", color = :blue)
 		@warn "La composante n'est pas connexe!"
 		return false
 	elseif (nb_nodes(comp_connexe) == 1) && (nb_edges(comp_connexe) == 0)
-		printstyled("un seul sommet, aucune arête \n", color = :blue)
 		return true
 	elseif (nb_nodes(comp_connexe) > 1) && (nb_edges(comp_connexe) > 0)
-		printstyled("plusieurs sommets, au moins une arête \n", color = :blue)
-		connected = Vector{Bool}()
-		connected_nodes = Vector{Any}()
+		connected = Vector{Bool}(); connected_nodes = Vector{Any}()
 		for edge in edges(comp_connexe)
-			push!(connected_nodes, nodes(edge)[1])
-			push!(connected_nodes, nodes(edge)[2])
+			push!(connected_nodes, nodes(edge)[1], nodes(edge)[2])
 		end
 		for node in nodes(comp_connexe)
-			if node in connected_nodes
-				push!(connected, true)
-			else
-				push!(connected, false)
-			end
+			node in connected_nodes ? push!(connected, true) : push!(connected, false)
 		end
-		if false in connected
-			@warn "La composante n'est pas connexe!"
-			return false
-		else
-			return true
-		end #if
+		false in connected ? (@warn "La composante n'est pas connexe!"; return false) : (return true)
 	end # gros if
 end
 
+""" Fonction qui regarde si un sommet est dans une composante connexe"""
+function in_connected(node :: Node{T}, comp_connexe :: Comp_connexe{T}) where T
+	node in nodes(comp_connexe) ? (return true) : (return false)
+end
 
+"""Fonction qui regarde si une composante connexe/graph est vide (aucun sommet
+et aucune arête)"""
+function isempty(graph :: AbstractGraph{T}) where T
+	return isempty(nodes(graph)) && isempty(edges(graph))
+end
 
+"""Fonction qui fusionne deux graphe. N'assure aucune connexité.
+Pourrait fusionner deux composante non connexe. Fonction non-optimale"""
+function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
+	cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())
+	for node in nodes(cmp1)
+		add_node!(cmp, node)
+	end
+	for node in nodes(cmp2)
+		add_node!(cmp, node)
+	end
+	for edge in edges(cmp1)
+		add_edge!(cmp, edge)
+	end
+	for edge in edges(cmp2)
+		add_edge!(cmp, edge)
+	end
+
+	return cmp
+end
+
+"""Fonction qui détermine si un arête vers d'un sommet vers lui-même"""
+function is_loop(edge :: Edge{T}) where T
+	return edge.node1 == edge.node2
+end
 
 """Affiche une compasante connexe"""
 function show(comp_connexe :: Comp_connexe)
