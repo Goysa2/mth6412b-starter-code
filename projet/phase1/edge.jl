@@ -5,8 +5,7 @@ import Base.show
 Nous n'avons pas typé la classe AbstractEdge ou Edge.
 Lorsqu'on attribut un type à la classe Edge, cela provoque un conflit avec
 le type de la classe Node."""
-abstract type AbstractEdge end
-# abstract type AbstractEdge{T} end
+abstract type AbstractEdge{T} end
 
 
 """Type représentant les arêtes d'un graphe.
@@ -18,16 +17,15 @@ Exemple:
         arete = Edge("arete1", noeud1, noeud2, 3)
 
 """
-mutable struct Edge <: AbstractEdge
-# mutable struct Edge{T} <: AbstractEdge{T}
-    node1 :: Node
-    node2 :: Node
-    weight :: Int
+mutable struct Edge{T} <: AbstractEdge{T}
+    node1 :: Node{T}
+    node2 :: Node{T}
+    weight :: Real
 end
 
 
 """Renvoie les sommets que l'arête connecte"""
-nodes(edge :: AbstractEdge) = edge.node1, edge.node2
+nodes(edge :: AbstractEdge) = (edge.node1, edge.node2)
 
 """Renvoie le poid d'une arête"""
 weight(edge :: AbstractEdge) = edge.weight

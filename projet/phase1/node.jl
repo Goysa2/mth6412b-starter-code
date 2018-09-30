@@ -28,6 +28,5 @@ data(node::AbstractNode) = node.data
 
 """Affiche un noeud"""
 function show(node::AbstractNode)
-    s = string("Node ", name(node), ", data: ", data(node))
-    println(s)
+    println("Node ", name(node), ", data: ", data(node))
 end

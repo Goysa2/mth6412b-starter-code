@@ -26,7 +26,7 @@ nodes_init = sort(nodes_init)
 
 ### Les sommets et arêtes que l'on va utiliser pour créer le graphe
 nodes_graph = Array{Node{Array{Float64,1}}, 1}()
-edges_graph = Array{Edge, 1}()
+edges_graph = Array{Edge{Array{Float64,1}}, 1}()
 
 ### On met tout les sommes dans un tableau de sommets"""
 for node in nodes_init
