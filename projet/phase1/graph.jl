@@ -53,13 +53,23 @@ nb_nodes(graph::AbstractGraph) = length(graph.nodes)
 """Renvoie le nombre d'arêtes du graphe."""
 nb_edges(graph::AbstractGraph) = length(graph.edges)
 
+"""Calcul poid total graphe."""
+function w_tot_edges(graph :: AbstractGraph)
+	W_edge = 0
+	for i = 1:length(graph.edges)
+		W_edge += graph.edges[i].weight
+	end
+	W_edge
+end
+
 """Affiche un graphe"""
 function show(graph::Graph)
 	graph_name = name(graph)
 	graph_nb_nodes = nb_nodes(graph)
 	graph_nb_edges = nb_edges(graph)
+	graph_weight = w_tot_edges(graph)
 	s = string("Graph ", graph_name, " has ", graph_nb_nodes, " nodes and ",
-	graph_nb_edges, " edges")
+	graph_nb_edges, " edges. And its total weight is ", graph_weight)
 	for node in nodes(graph)
 		show(node)
 	end
