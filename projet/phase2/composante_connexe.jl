@@ -5,6 +5,7 @@ import Base.merge
 """Type abstrait dont d'autres types de graphes dériveront."""
 abstract type AbstractGraph{T} end
 
+# Les fonctions suivantes fonctionnent excatement comme la structure Graph
 """Type representant un graphe comme un ensemble de noeuds et d'arêtes
 
 Exemple :
@@ -14,7 +15,7 @@ Exemple :
 		node3 = Node("Jill", 4.12)
 		edge1 = Edge(node1, node2, 2)
 		edge2 = Edge(node1, node3, 5)
-		G = Graph("Ick", [node1, node2, node3], [edge1, edge2])
+		G = Comp_connexe("Ick", [node1, node2, node3], [edge1, edge2])
 
 Attention, tous les noeuds doivent avoir des données de même type.
 """
@@ -55,7 +56,18 @@ nb_nodes(comp_connexe :: AbstractGraph) = length(comp_connexe.nodes)
 """Renvoie le nombre d'arêtes d'une composante connexe."""
 nb_edges(comp_connexe :: AbstractGraph) = length(comp_connexe.edges)
 
-
+################################################################################
+# On regarde différents cas.
+# S'il y a plusieurs sommets et aucune arête le graphe n'est pas connexe
+# S'il y a un seul sommet et aucune arêt le graph est connexe
+# S'il y a plusieurs noeuds et plusieurs sommets:
+#	- On parcours les arêtes du graphe et on mets ses sommets dans un vecteur
+#	- On parcours les noeuds de la composante. Si Le noeud est dans le vecteur de
+#	  de noeuds que l'on a déjà on met true dans un vecteur de booléen. Sinon
+#	  le noeud n'est pas connecté à aucune arête donc on met false dans le vecteur
+#   Si il y a une valeur fausse dans le vecteur de booléen à la fin cela signifie
+#	qu'un sommet n'est relié à aucune arête donc le graphe n'est pas connexe
+################################################################################
 """S'assure que la composante est connexe (en théorie devrait fonctionner
 pour un graphe également)"""
 function is_connected(comp_connexe :: AbstractGraph)
@@ -88,7 +100,7 @@ function isempty(graph :: AbstractGraph{T}) where T
 end
 
 """Fonction qui fusionne deux graphe. N'assure aucune connexité.
-Pourrait fusionner deux composante non connexe. Fonction non-optimale"""
+Pourrait fusionner deux composante non connexe."""
 function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
 	cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())
 	for node in nodes(cmp1)
@@ -105,11 +117,6 @@ function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
 	end
 
 	return cmp
-end
-
-"""Fonction qui détermine si un arête vers d'un sommet vers lui-même"""
-function is_loop(edge :: Edge{T}) where T
-	return edge.node1 == edge.node2
 end
 
 """Affiche une compasante connexe"""
