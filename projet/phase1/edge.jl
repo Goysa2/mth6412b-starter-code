@@ -30,6 +30,12 @@ nodes(edge :: AbstractEdge) = (edge.node1, edge.node2)
 """Renvoie le poid d'une arête"""
 weight(edge :: AbstractEdge) = edge.weight
 
+# Fonction ajouter à la phase 2
+"""Fonction qui détermine si un arête vers d'un sommet vers lui-même"""
+function is_loop(edge :: Edge{T}) where T
+	return edge.node1 == edge.node2
+end
+
 """Affiche une arête, c'est-à-dire les sommets relié ainsi que son poids."""
 function show(edge :: AbstractEdge)
     s = string("Edge connecting Nodes ", name(edge.node1),
