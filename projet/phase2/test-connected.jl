@@ -1,3 +1,5 @@
+using Test
+
 include("../phase1/node.jl")
 include("../phase1/edge.jl")
 include("../phase1/graph.jl")
@@ -14,3 +16,8 @@ G_1 = Graph("premier-graphe", [first_node, second_node, third_node], Vector{Edge
 G_2 = Graph("second-graphe", [first_node, second_node, third_node], [edge_1_2])
 G_3 = Graph("troisième-graphe", [first_node, second_node, third_node], [edge_1_2, edge_2_3])
 G_4 = Graph("quatrième-graphe", [first_node], Vector{Edge{Int64}}())
+
+@test is_connected(G_1) == false
+@test is_connected(G_2) == false
+@test is_connected(G_3) == true
+@test is_connected(G_4) == true
