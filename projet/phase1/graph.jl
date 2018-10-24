@@ -1,5 +1,6 @@
 import Base.show
-
+import Base.isempty
+import Base.merge
 """Type abstrait dont d'autres types de graphes dériveront."""
 abstract type AbstractGraph{T} end
 
@@ -68,13 +69,77 @@ function show(graph::Graph)
 	graph_nb_nodes = nb_nodes(graph)
 	graph_nb_edges = nb_edges(graph)
 	graph_weight = w_tot_edges(graph)
-	s = string("Graph ", graph_name, " has ", graph_nb_nodes, " nodes and ",
-	graph_nb_edges, " edges. And its total weight is ", graph_weight)
+
 	for node in nodes(graph)
 		show(node)
 	end
 	for edge in edges(graph)
 		show(edge)
 	end
-	show(s)
+	println("Graph ", graph_name, " has ", graph_nb_nodes, " nodes and ",
+	graph_nb_edges, " edges. And its total weight is ", graph_weight)
+end
+
+
+################################################################################
+# On regarde différents cas.
+# S'il y a plusieurs sommets et aucune arête le graphe n'est pas connexe
+# S'il y a un seul sommet et aucune arêt le graph est connexe
+# S'il y a plusieurs noeuds et plusieurs sommets:
+#	- On parcours les arêtes du graphe et on mets ses sommets dans un vecteur
+#	- On parcours les noeuds de la composante. Si Le noeud est dans le vecteur de
+#	  de noeuds que l'on a déjà on met true dans un vecteur de booléen. Sinon
+#	  le noeud n'est pas connecté à aucune arête donc on met false dans le vecteur
+#   Si il y a une valeur fausse dans le vecteur de booléen à la fin cela signifie
+#	qu'un sommet n'est relié à aucune arête donc le graphe n'est pas connexe
+################################################################################
+"""S'assure que la composante est connexe (en théorie devrait fonctionner
+pour un graphe également)"""
+function is_connected(graph :: AbstractGraph)
+	if (nb_nodes(graph) > 1) && (nb_edges(graph) == 0)
+		println("La composante n'est pas connexe!")
+		return false
+	elseif (nb_nodes(graph) == 1) && (nb_edges(graph) == 0)
+		return true
+	elseif (nb_nodes(graph) > 1) && (nb_edges(graph) > 0)
+		connected = Vector{Bool}(); connected_nodes = Vector{Any}()
+		for edge in edges(graph)
+			push!(connected_nodes, nodes(edge)[1], nodes(edge)[2])
+		end
+		for node in nodes(graph)
+			node in connected_nodes ? push!(connected, true) : push!(connected, false)
+		end
+		false in connected ? (println("La composante n'est pas connexe!"); return false) : (return true)
+	end # gros if
+end
+
+""" Fonction qui regarde si un sommet est dans une composante connexe"""
+function in_component(node :: Node{T}, graph :: Graph{T}) where T
+	node in nodes(graph) ? (return true) : (return false)
+end
+
+"""Fonction qui regarde si une composante connexe/graph est vide (aucun sommet
+et aucune arête)"""
+function isempty(graph :: AbstractGraph{T}) where T
+	return isempty(nodes(graph)) && isempty(edges(graph))
+end
+
+"""Fonction qui fusionne deux graphe. N'assure aucune connexité.
+Pourrait fusionner deux composantes disjointes non connexes."""
+function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
+	cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())
+	for node in nodes(cmp1)
+		add_node!(cmp, node)
+	end
+	for node in nodes(cmp2)
+		add_node!(cmp, node)
+	end
+	for edge in edges(cmp1)
+		add_edge!(cmp, edge)
+	end
+	for edge in edges(cmp2)
+		add_edge!(cmp, edge)
+	end
+
+	return cmp
 end

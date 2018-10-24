@@ -17,4 +17,4 @@ f_g = Edge(f, g, 2)
 g_h = Edge(g, h, 1)
 h_i = Edge(h, i, 7)
 
-exemple_graph = Graph("Note de cours", [a, b, c, d, e, f, g, h, i], [a_b, a_h, b_c, b_h, c_d, c_f, c_i, d_e, d_f, e_f, f_g, g_h, h_i]);
+G = Graph("Note de cours", [a, b, c, d, e, f, g, h, i], [a_b, a_h, b_c, b_h, c_d, c_f, c_i, d_e, d_f, e_f, f_g, g_h, h_i]);

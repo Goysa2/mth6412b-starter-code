@@ -5,8 +5,8 @@ function kruskal(G :: Graph{T}) where T
     edges_graph = edges(G)
     nodes_graph = nodes(G)
 
-    Aₖ = Comp_connexe("Arbre de recouvrement minimal", Vector{Node{T}}(), Vector{Edge{T}}())
-    temp_comp_conn = Vector{Comp_connexe{T}}()
+    Aₖ = Graph("Arbre de recouvrement minimal", Vector{Node{T}}(), Vector{Edge{T}}())
+    temp_comp_conn = Vector{Graph{T}}()
     k = 1
     # Fonction pour trier les arêtes en fonctions du poids
     sort!(edges_graph, by = x -> x.weight)
@@ -18,7 +18,7 @@ function kruskal(G :: Graph{T}) where T
                 add_edge!(Aₖ, edge)
             end
         elseif !(edge.node1 in nodes(Aₖ)) && !(edge.node2 in nodes(Aₖ))
-            tmp = Comp_connexe("tmp $k", [edge.node1, edge.node2], [edge])
+            tmp = Graph("tmp $k", [edge.node1, edge.node2], [edge])
             no_merge = true
             for cmp in temp_comp_conn
                 if (edge.node1 in nodes(cmp)) || (edge.node2 in nodes(cmp))

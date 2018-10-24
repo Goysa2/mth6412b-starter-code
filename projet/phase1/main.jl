@@ -10,11 +10,11 @@ include("read_stsp.jl")
 ### Le fichier brazil58.tsp par exemple n'a pas de sommet mais présente des
 ### arêtes ce qui ne fait pas de sens, car notre classe Edge a besoin de sommets
 ### a relié
-# file = "../../instances/stsp/bayg29.tsp"
+ file = "../../instances/stsp/bayg29.tsp"
 # file = "../../instances/stsp/bays29.tsp"
 # file = "../../instances/stsp/dantzig42.tsp"
 # file = "../../instances/stsp/gr120.tsp"
-file = "../../instances/stsp/pa561.tsp"
+# file = "../../instances/stsp/pa561.tsp"
 
 ### On va chercher l'information utilisable des fichiers tsp grace à la fonction
 ### read_stsp. On va ensuite convertir cette information pour quelle soit utilisable
