@@ -33,22 +33,11 @@ function Tree(s :: String, d :: T) where T
 	return arbre
 end
 
-"""Renvoie le nom du graphe."""
-name(t :: Tree) = t.name
-
-"""Renvoie le parent"""
-parent(t :: Tree) = t.parent
-
 """Renvoie les enfants"""
 children(t :: Tree) = t.children
 
 """Renvoie la racine"""
 root(t :: Tree) = t.root
-
-"""Désigne le parent"""
-function set_parent!(t :: Tree, p :: Tree)
-	t.parent = p
-end
 
 """Ajoute un enfant à p"""
 function add_children!(t :: Tree, e :: Tree)
