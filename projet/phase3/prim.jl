@@ -12,40 +12,37 @@ function prim(G :: Graph{T}) where T
         (node != noeud_source) && push!(file_de_priorite, node)
     end
 
-
     # arbre de recouvrement minimal
     Aₖ = Graph("Arbre de recouvrement minimal", Vector{Node{T}}(), Vector{Edge{T}}())
     add_node!(Aₖ, noeud_source)
-    # i = 1
+
     while !is_empty(file_de_priorite)
-        # println("on est au début du while")
-        @show edges_adj(Aₖ, G)
             for edge in edges_adj(Aₖ, G)
                 if (edge.node1 in nodes(Aₖ)) && !(edge.node2 in nodes(Aₖ))
                     if weight(edge) < min_weight(edge.node2)
                         set_min_weight!(edge.node2, weight(edge))
+                        set_parent!(edge.node2, edge.node1)
                     end
                 elseif (edge.node2 in nodes(Aₖ)) && !(edge.node1 in nodes(Aₖ))
-                    if weight(edge) < min_weight(edge.node2)
-                        set_min_weight!(edge.node2, weight(edge))
+                    if weight(edge) < min_weight(edge.node1)
+                        set_min_weight!(edge.node1, weight(edge))
+                        set_parent!(edge.node1, edge.node2)
                     end
                 end
             end # for
 
             nouveau_noeud = popfirst!(file_de_priorite)
             add_node!(Aₖ, nouveau_noeud)
-            new_edge = Edge(noeud_source, noeud_source, Inf)
+            new_edge = false
             for edge in edges(G)
-                if weight(edge) == min_weight(nouveau_noeud)
-                    if (edge.node1 == nouveau_noeud) || (edge.node2 == nouveau_noeud)
-                        new_edge = edge
-                    end
+                if (edge.node1 == parent(nouveau_noeud)) && (edge.node2 == nouveau_noeud)
+                    add_edge!(Aₖ, edge)
+                    break
+                elseif (edge.node2 == parent(nouveau_noeud)) && (edge.node1 == nouveau_noeud)
+                    add_edge!(Aₖ, edge)
+                    break
                 end
             end
-            add_edge!(Aₖ, new_edge)
-            # show(Aₖ)
-            # i += 1
-    end # while
-
+    end
     return Aₖ
 end
