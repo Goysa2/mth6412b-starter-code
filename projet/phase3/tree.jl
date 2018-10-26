@@ -54,12 +54,6 @@ function set_root!(t :: Tree, r :: Tree)
 	t.root = r
 end
 
-"""Donne l'information de la tosante"""
-data(t :: Tree) = t.data
-
-"""Affiche une tosante"""
-show(t :: Tree) = show(data(t))
-
 """Donne le rang de tasante"""
 rang(t :: Tree) = t.rang
 
