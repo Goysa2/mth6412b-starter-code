@@ -17,21 +17,30 @@ mutable struct Node{T} <: AbstractNode{T}
     name :: String
     data :: T
     min_weight :: Int
+    parent :: Union{Nothing, AbstractNode}
 end
 
 """Constructeur"""
 function Node()
-    return Node("", nothing, typemax(Int))
+    return Node("", nothing, typemax(Int), nothing)
 end
 
 """Constructeur"""
 function Node(s :: String, d :: T) where T
-    return Node(s, d, typemax(Int))
+    return Node(s, d, typemax(Int), nothing)
 end
 
 """Modifier l'attribut min_weight d'un noeud"""
 function set_min_weight!(n :: AbstractNode, w :: Int)
     n.min_weight = w
+end
+
+"""Affiche le parent d'un noeud"""
+parent(n :: AbstractNode) = n.parent
+
+"""Modifie le parent d'un noeud"""
+function set_parent!(n :: AbstractNode, p :: AbstractNode)
+    n.parent = p
 end
 
 # on présume que tous les noeuds dérivant d'AbstractNode
@@ -50,5 +59,10 @@ min_weight(node :: AbstractNode) = node.min_weight
 
 """Affiche un noeud"""
 function show(node::AbstractNode)
-    println("Node ", name(node), ", data: ", data(node))
+    print("Node $(name(node)) data: $(data(node))")
+    if parent(node) == nothing
+        print(" \n ")
+    else
+        print("  parent = $(name(parent(node))) \n")
+    end
 end
