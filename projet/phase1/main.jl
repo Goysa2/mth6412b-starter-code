@@ -58,4 +58,4 @@ end
 
 
 G = Graph("[insert graph name here]", nodes_graph, edges_graph);
-show(G)
+# show(G)

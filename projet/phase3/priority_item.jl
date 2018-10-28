@@ -19,6 +19,6 @@ end
 
 import Base.isless, Base.==
 
-isless(p::PriorityItem, q::PriorityItem) = priority(p) < priority(q)
+isless(p::Union{AbstractPriorityItem, AbstractNode}, q::Union{AbstractPriorityItem, AbstractNode}) = priority(p) < priority(q)
 
 ==(p::PriorityItem, q::PriorityItem) = priority(p) == priority(q)

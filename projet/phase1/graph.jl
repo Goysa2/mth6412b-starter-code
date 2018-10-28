@@ -143,3 +143,20 @@ function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
 
 	return cmp
 end
+
+
+"""
+Fonction qui détermine les arêtes avec un sommet dans G et l'autre qui ne
+l'est pas (on suppose qu'elle est dans un ensemble W)
+"""
+function edges_adj(G :: AbstractGraph, W :: AbstractGraph)
+	edge_adjacentes = Vector{Edge}()
+	for edge in edges(W)
+		if (edge.node1 in nodes(G)) && !(edge.node2 in nodes(G))
+			push!(edge_adjacentes, edge)
+		elseif (edge.node2 in nodes(G)) && !(edge.node1 in nodes(G))
+			push!(edge_adjacentes, edge)
+		end
+	end
+	return edge_adjacentes
+end
