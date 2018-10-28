@@ -124,7 +124,7 @@ function isempty(graph :: AbstractGraph{T}) where T
 	return isempty(nodes(graph)) && isempty(edges(graph))
 end
 
-"""Fonction qui fusionne deux graphe. N'assure aucune connexité.
+"""Fonction qui fusionne deux graphes. N'assure pas la connexité.
 Pourrait fusionner deux composantes disjointes non connexes."""
 function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
 	cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())

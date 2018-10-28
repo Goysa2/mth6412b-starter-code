@@ -49,15 +49,15 @@ function remove_child!(t :: Tree)
 	pop!(t.children)
 end
 
-"""Désigne la racine d'une tosante"""
+"""Désigne la racine d'une composante"""
 function set_root!(t :: Tree, r :: Tree)
 	t.root = r
 end
 
-"""Donne le rang de tasante"""
+"""Donne le rang de composante"""
 rang(t :: Tree) = t.rang
 
-"""Attribue le rang d'une tosante"""
+"""Attribue le rang d'une composante"""
 function set_rang!(t :: Tree, r :: Int)
 	t.rang = r
 end

@@ -6,10 +6,12 @@ include("tree.jl")
 # tree3 = Tree("fille de sam", 3.14)
 # tree4 = Tree("fils de sam", 3.14)
 #
+### Union par le rang
 # union_rang(tree1, tree2)
 # union_rang(tree3, tree4)
 # union_rang(tree1, tree3)
 #
+### Compression par de chemin
 # compression_rang!(tree1)
 # println("parent tree1 = $(name(parent(tree1)))")
 # println("root tree1 = $(name(root(tree1)))")
