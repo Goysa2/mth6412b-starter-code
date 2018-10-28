@@ -1,4 +1,5 @@
 import Base.show
+import Base.parent
 
 """Type abstrait dont d'autres types de noeuds dériveront."""
 abstract type AbstractNode{T} end
