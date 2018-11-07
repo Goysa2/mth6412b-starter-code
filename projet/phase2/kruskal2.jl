@@ -5,7 +5,7 @@ function kruskal2(G :: Graph{T}) where T
     edges_graph = edges(G)
     nodes_graph = nodes(G)
 
-    G = Graph("Graphe de recourvrement minimal", nodes_graph, Vector{Edge{T}}())
+    G = Graph("Graphe de recouvrement minimal", nodes_graph, Vector{Edge{T}}())
 
     k = 1
     # Fonction pour trier les arêtes en fonctions du poids
