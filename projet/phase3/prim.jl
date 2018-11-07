@@ -8,8 +8,8 @@ function prim(G :: Graph{T}) where T
     noeud_source = nodes_graph[1]
     set_min_weight!(noeud_source, 0)
     file_de_priorite = PriorityQueue{AbstractNode}()
-    for node in nodes_graph
-        (node != noeud_source) && push!(file_de_priorite, node)
+    for node in nodes_graph[2:end]
+        push!(file_de_priorite, node)
     end
 
     # arbre de recouvrement minimal
