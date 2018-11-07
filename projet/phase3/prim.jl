@@ -23,11 +23,13 @@ function prim(G :: Graph{T}) where T
                 if weight(edge) < min_weight(edge.node2)
                     set_min_weight!(edge.node2, weight(edge))
                     set_parent!(edge.node2, edge.node1)
+                    set_root!(edge.node2, root(edge.node1))
                 end
             elseif (edge.node2 in nodes(Aₖ)) && !(edge.node1 in nodes(Aₖ))
                 if weight(edge) < min_weight(edge.node1)
                     set_min_weight!(edge.node1, weight(edge))
                     set_parent!(edge.node1, edge.node2)
+                    set_root!(edge.node1, root(edge.node2))
                 end
             end
         end # for
