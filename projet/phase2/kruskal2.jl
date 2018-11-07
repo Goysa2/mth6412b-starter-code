@@ -19,9 +19,9 @@ function kruskal2(G :: Graph{T}) where T
             add_edge!(G, edge)
             if (root(edge.node1) == root(Aₖ)) || (root(edge.node2) == root(Aₖ))
                 if root(edge.node1) == root(Aₖ)
-                    union_rang(Aₖ, edge.node2)
+                    union_rang(edge.node1, edge.node2)
                 else
-                    union_rang(Aₖ, edge.node1)
+                    union_rang(edge.node2, edge.node1)
                 end
             elseif !(root(edge.node1) == root(Aₖ)) && !(root(edge.node2) == root(Aₖ))
                 union_rang(edge.node1, edge.node2)

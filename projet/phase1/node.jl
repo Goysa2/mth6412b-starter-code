@@ -90,13 +90,16 @@ function union_rang(x:: Node, y :: Node)
 	        set_rang!(root(x), rang(root(x)) + 1)
 	        set_parent!(root(y), root(x))
 			set_root!(root(y), root(parent(y)))
+			set_parent!(y, x)
 	    elseif rang(root(x)) != rang(root(y))
 	        if rang(root(x)) > rang(root(y))
 				set_parent!(root(y), root(x))
 				set_root!(root(y), root(parent(y)))
+				set_parent!(y, x)
 	        else
 				set_parent!(root(x), root(y))
 				set_root!(root(x), root(parent(x)))
+				set_parent!(x, y)
 	        end
 	    end # comparaison rang racine
 	end # if
@@ -104,7 +107,7 @@ end
 
 function compression_chemin!(n :: Node)
 	if parent(n) != n
-		set_parent!(n, root(parent(n)))
+		# set_parent!(n, root(parent(n)))
 		set_root!(n, root(parent(n)))
 	end
 end # function
