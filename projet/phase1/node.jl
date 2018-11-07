@@ -80,14 +80,9 @@ min_weight(node :: AbstractNode) = node.min_weight
 
 """Affiche un noeud"""
 function show(node::AbstractNode)
-    print("Node $(name(node)) data: $(data(node))")
-    if parent(node) == nothing
-        print(" \n ")
-    else
-        print("  parent = $(name(parent(node))) \n")
-    end
-end
+    print("Node $(name(node)) data: $(data(node)) parent = $(name(parent(node))) root = $(name(root(node)))\n")
 
+end
 
 function union_rang(x:: Node, y :: Node)
 	if root(x) != root(y)
@@ -107,33 +102,9 @@ function union_rang(x:: Node, y :: Node)
 	end # if
 end
 
-# function union_rang(x :: Node, y :: Node)
-# 	x_root = root(x)
-# 	y_root = root(y)
-#
-# 	if x_root == y_root
-# 		return
-# 	end
-#
-# 	if rang(x_root) < rang(y_root)
-# 		(x_root, y_root) = (y_root, x_root)
-# 	end
-#
-# 	set_parent!(y_root, x_root)
-# 	if rang(x_root) == rang(y_root)
-# 	  set_rang!(x_root, rang(x_root) + 1)
-#   	end
-# end
-
-function compression_rang!(n :: Node)
-	if (length(children(n)) > 0)
-		for child in children(n)
-			if length(children(child)) > 0
-				set_parent!.(children(child), parent(n))
-				add_children!.(n, children(child))
-			end
-		end
-	else
-		return n
+function compression_chemin!(n :: Node)
+	if parent(n) != n
+		set_parent!(n, root(parent(n)))
+		set_root!(n, root(parent(n)))
 	end
-end
+end # function
