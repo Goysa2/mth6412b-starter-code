@@ -11,7 +11,8 @@ function kruskal2(G :: Graph{T}) where T
     # Fonction pour trier les arêtes en fonctions du poids
     sort!(edges_graph, by = x -> x.weight)
     Aₖ = edges_graph[1].node1
-
+    racine = edges_graph[1].node1
+    
     # for edge in edges_graph
     while length(edges(G)) < length(nodes_graph) - 1
         edge = edges_graph[k];
@@ -35,5 +36,5 @@ function kruskal2(G :: Graph{T}) where T
         k += 1
     end
 
-    return G
+    return G, racine
 end

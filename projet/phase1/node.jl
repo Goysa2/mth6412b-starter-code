@@ -18,18 +18,20 @@ mutable struct Node{T} <: AbstractNode{T}
     data :: T
     min_weight :: Int
     parent :: Union{Nothing, AbstractNode}
+	left :: Union{Nothing, AbstractNode}
+	right :: Union{Nothing, AbstractNode}
     root :: Union{Nothing, AbstractNode}
     rang :: Int
 end
 
 """Constructeur"""
 function Node()
-    return Node("", nothing, typemax(Int), nothing, nothing, 0)
+    return Node("", nothing, typemax(Int), nothing, nothing, nothing, nothing, 0)
 end
 
 """Constructeur"""
 function Node(s :: String, d :: T) where T
-    a = Node(s, d, typemax(Int), nothing, nothing, 0)
+    a = Node(s, d, typemax(Int), nothing, nothing, nothing, nothing, 0)
     set_parent!(a, a)
     set_root!(a, a)
     return a
@@ -43,12 +45,28 @@ end
 """Affiche le parent d'un noeud"""
 parent(n :: AbstractNode) = n.parent
 
+"""Affiche l'enfant de gauche d'un noeud"""
+left(n :: Node) = n.left
+
+"""Affiche l'enfant de doite d'un noeud"""
+right(n :: Node) = n.right
+
 """Renvoie la racine"""
 root(n :: Node) = n.root
 
 """Modifie le parent d'un noeud"""
 function set_parent!(n :: AbstractNode, p :: AbstractNode)
     n.parent = p
+end
+
+"""Modifie l'enfant de gauche d'un noeud"""
+function set_left!(n :: Node, l :: Node)
+    n.left = l
+end
+
+"""Modifie l'enfant de droite d'un noeud"""
+function set_right!(n :: Node, d :: Node)
+    n.right = d
 end
 
 """Désigne la racine d'une composante"""
@@ -84,6 +102,7 @@ function show(node::AbstractNode)
 
 end
 
+"""Union par le rang"""
 function union_rang(x:: Node, y :: Node)
 	if root(x) != root(y)
 		if rang(root(x)) == rang(root(y))
@@ -105,6 +124,7 @@ function union_rang(x:: Node, y :: Node)
 	end # if
 end
 
+"""Compression des chemin"""
 function compression_chemin!(n :: Node)
 	if parent(n) != n
 		# set_parent!(n, root(parent(n)))
