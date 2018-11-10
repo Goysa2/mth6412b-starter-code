@@ -1,5 +1,6 @@
 ### On a ajoute les structures/fonctions nécessaires
 include("node.jl")
+include("../phase3/tree.jl")
 include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")

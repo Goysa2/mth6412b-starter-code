@@ -1,0 +1,20 @@
+a = Tree("a", 1)
+b = Tree("b", 1)
+c = Tree("c", 1)
+d = Tree("d", 1)
+e = Tree("e", 1)
+f = Tree("f", 1)
+g = Tree("g", 1)
+h = Tree("h", 1)
+i = Tree("i", 1)
+
+a_b = Edge(a, b, 4); a_h = Edge(a, h, 8)
+b_c = Edge(b, c, 8); b_h = Edge(b, h, 11)
+c_d = Edge(c, d, 7); c_f = Edge(c, f, 4); c_i = Edge(c, i, 2)
+d_e = Edge(d, e, 9); d_f = Edge(d, f, 14)
+e_f = Edge(e, f, 10)
+f_g = Edge(f, g, 2)
+g_h = Edge(g, h, 1)
+h_i = Edge(h, i, 7)
+
+G = Graph("Note de cours", [a, b, c, d, e, f, g, h, i], [a_b, a_h, b_c, b_h, c_d, c_f, c_i, d_e, d_f, e_f, f_g, g_h, h_i]);

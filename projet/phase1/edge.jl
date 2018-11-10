@@ -18,8 +18,8 @@ Exemple:
 
 """
 mutable struct Edge{T} <: AbstractEdge{T}
-    node1 :: Node{T}
-    node2 :: Node{T}
+    node1 :: AbstractNode{T}
+    node2 :: AbstractNode{T}
     weight :: Real
 end
 

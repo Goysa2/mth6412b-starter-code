@@ -19,12 +19,12 @@ Attention, tous les noeuds doivent avoir des données de même type.
 """
 mutable struct Graph{T} <: AbstractGraph{T}
 	name :: String
-	nodes :: Vector{Node{T}}
+	nodes :: Union{Vector{Node{T}}, Vector{Tree{T}}}
 	edges :: Vector{Edge{T}}
 end
 
 """Ajoute un noeud au graphe."""
-function add_node!(graph::Graph{T}, node::Node{T}) where T
+function add_node!(graph::Graph{T}, node :: Union{Node{T}, Tree{T}}) where T
 	push!(graph.nodes, node)
 	graph
 end
@@ -114,7 +114,7 @@ function is_connected(graph :: AbstractGraph)
 end
 
 """ Fonction qui regarde si un sommet est dans une composante connexe"""
-function in_component(node :: Node{T}, graph :: Graph{T}) where T
+function in_component(node :: AbstractNode{T}, graph :: Graph{T}) where T
 	node in nodes(graph) ? (return true) : (return false)
 end
 
@@ -127,7 +127,12 @@ end
 """Fonction qui fusionne deux graphes. N'assure pas la connexité.
 Pourrait fusionner deux composantes disjointes non connexes."""
 function merge(cmp1 :: AbstractGraph{T}, cmp2 :: AbstractGraph) where T
-	cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())
+	if typeof(nodes(cmp1)[1]) == Node{T}
+		cmp = Graph("Merged graph", Vector{Node{T}}(), Vector{Edge{T}}())
+	else typeof(nodes(cmp1)[1]) == Tree{T}
+		cmp = Graph("Merged graph", Vector{Tree{T}}(), Vector{Edge{T}}())
+	end
+
 	for node in nodes(cmp1)
 		add_node!(cmp, node)
 	end
