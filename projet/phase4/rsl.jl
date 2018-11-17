@@ -5,16 +5,18 @@ function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
         racine = parent(racine)
     end
 
-    for node in nodes(A)
-        if parent(node) != node
-            add_children!(parent(node), node)
+    if algorithm_mst == prim
+        for node in nodes(A)
+            if parent(node) != node
+                add_children!(parent(node), node)
+            end
         end
     end
 
     ordre_noeud = parcours_preodre_iter(racine)
     println(" ")
     poids_tournee = 0
-    for i = 1 : length(edges(A))
+    for i = 1 : length(edges(A))-1
         node_1 = ordre_noeud[i]
         node_2 = ordre_noeud[i+1]
         for edge in edges(G)

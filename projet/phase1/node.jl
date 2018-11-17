@@ -104,24 +104,39 @@ function show(node::AbstractNode)
 
 end
 
-"""Union par le rang"""
+# """Union par le rang"""
+# function union_rang(x:: Node, y :: Node)
+# 	if root(x) != root(y)
+# 		if rang(root(x)) == rang(root(y))
+# 	        set_rang!(root(x), rang(root(x)) + 1)
+# 	        set_parent!(root(y), root(x))
+# 			add_children!(root(x), y)
+# 	    elseif rang(root(x)) != rang(root(y))
+# 	        if rang(root(x)) > rang(root(y))
+# 				set_parent!(root(y), root(x))
+# 				add_children!(root(x), y)
+# 	        else
+# 				set_parent!(root(x), root(y))
+# 				add_children!(root(y), x)
+# 	        end
+# 	    end # comparaison rang racine
+# 	end # if
+# end
+
 function union_rang(x:: Node, y :: Node)
-	if root(x) != root(y)
-		if rang(root(x)) == rang(root(y))
-	        set_rang!(root(x), rang(root(x)) + 1)
-	        set_parent!(root(y), root(x))
-			add_children!(root(x), y)
-	    elseif rang(root(x)) != rang(root(y))
-	        if rang(root(x)) > rang(root(y))
-				set_parent!(root(y), root(x))
-				add_children!(root(x), y)
-	        else
-				set_parent!(root(x), root(y))
-				add_children!(root(y), x)
-	        end
-	    end # comparaison rang racine
-	end # if
+ 	compression_chemin!(x); compression_chemin!(y)
+	x = root(x); y = root(y)
+
+	if rang(x) < rang(y)
+		set_parent!(x, y)
+	elseif rang(y) < rang(x)
+		set_parent!(y, x)
+	else
+		set_parent!(y, x)
+		set_rang!(x, rang(x) + 1)
+	end
 end
+
 
 """Compression des chemin"""
 function compression_chemin!(n :: Node)

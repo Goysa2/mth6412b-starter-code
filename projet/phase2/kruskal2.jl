@@ -20,10 +20,12 @@ function kruskal2(G :: Graph{T}) where T
     # while (length(edges(G)) + length(temp_edges)) < length(nodes_graph) - 1
     # while k < 87
     while e_cpt < length(nodes_graph) - 1
-        # printstyled("à l'itération k = $k \n", color = :green)
+        printstyled("à l'itération k = $k \n", color = :green)
         edge = edges_graph[k];
         println("on traite l'arête:")
         show(edge)
+        compression_chemin!(edge.node1); compression_chemin!(edge.node2);
+        edge.node1 = root(edge.node1); edge.node2 = root(edge.node2);
         if (root(edge.node1) != root(edge.node2)) #i.e s'ils sont dans deux composantes différentes
             println("on est dans le cas: deux composantes différentes")
             add_edge!(G2, edge)
