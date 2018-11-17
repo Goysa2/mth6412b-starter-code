@@ -23,11 +23,11 @@ function parcours_preodre_iter(n :: Union{AbstractNode, Nothing})
     node_visit = Vector{Node}()
 
     while length(node_stack) > 0
-        current = pop!(node_stack)
-        print("$(name(current)) ")
-        push!(node_visit, current)
+        current_node = pop!(node_stack)
+        print("$(name(current_node)) ")
+        push!(node_visit, current_node)
 
-        for child in children(current)
+        for child in children(current_node)
             push!(node_stack, child)
         end
     end

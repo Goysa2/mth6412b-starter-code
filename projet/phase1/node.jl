@@ -21,19 +21,28 @@ mutable struct Node{T} <: AbstractNode{T}
 	root 		:: Union{Nothing, AbstractNode}
 	children 	:: Vector
     rang 		:: Int
+	marked 		:: Bool
 end
 
 """Constructeur"""
 function Node()
-    return Node("", nothing, typemax(Int), nothing, nothing, Vector(), 0)
+    return Node("", nothing, typemax(Int), nothing, nothing, Vector(), 0, false)
 end
 
 """Constructeur"""
 function Node(s :: String, d :: T) where T
-    a = Node(s, d, typemax(Int), nothing, nothing, Vector(), 0)
+    a = Node(s, d, typemax(Int), nothing, nothing, Vector(), 0, false)
     set_parent!(a, a)
     set_root!(a, a)
     return a
+end
+
+"""On regarde si le noeud est marqué"""
+marked(n :: AbstractNode) = n.marked
+
+"""On marque le noeud"""
+function set_marked!(n :: AbstractNode)
+	n.marked = true
 end
 
 """Modifier l'attribut min_weight d'un noeud"""
@@ -101,17 +110,14 @@ function union_rang(x:: Node, y :: Node)
 		if rang(root(x)) == rang(root(y))
 	        set_rang!(root(x), rang(root(x)) + 1)
 	        set_parent!(root(y), root(x))
-			set_root!(root(y), root(parent(y)))
-			set_parent!(y, x)
+			add_children!(root(x), y)
 	    elseif rang(root(x)) != rang(root(y))
 	        if rang(root(x)) > rang(root(y))
 				set_parent!(root(y), root(x))
-				set_root!(root(y), root(parent(y)))
-				set_parent!(y, x)
+				add_children!(root(x), y)
 	        else
 				set_parent!(root(x), root(y))
-				set_root!(root(x), root(parent(x)))
-				set_parent!(x, y)
+				add_children!(root(y), x)
 	        end
 	    end # comparaison rang racine
 	end # if
@@ -120,7 +126,6 @@ end
 """Compression des chemin"""
 function compression_chemin!(n :: Node)
 	if parent(n) != n
-		# set_parent!(n, root(parent(n)))
 		set_root!(n, root(parent(n)))
 	end
 end # function

@@ -1,5 +1,9 @@
 function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
-    A, racine = algorithm_mst(G)
+    A = algorithm_mst(G)
+    racine = nodes(A)[1]
+    while root(racine) != racine
+        racine = parent(racine)
+    end
 
     for node in nodes(A)
         if parent(node) != node
@@ -16,7 +20,17 @@ function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
         for edge in edges(G)
             if (edge.node1 == node_1 && edge.node2 == node_2) || (edge.node2 == node_1 && edge.node1 == node_2)
                 poids_tournee += weight(edge)
+                break
             end
+        end
+    end
+
+    node_1 = ordre_noeud[1]
+    node_end = ordre_noeud[end]
+    for edge in edges(G)
+        if (edge.node1 == node_1 && edge.node2 == node_end) || (edge.node2 == node_1 && edge.node1 == node_end)
+            poids_tournee += weight(edge)
+            break
         end
     end
 

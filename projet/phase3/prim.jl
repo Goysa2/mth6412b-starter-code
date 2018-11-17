@@ -49,5 +49,5 @@ function prim(G :: Graph{T}) where T
             k += 1
         end
     end
-    return Aₖ, noeud_source
+    return Aₖ
 end
