@@ -5,13 +5,13 @@ function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
         racine = parent(racine)
     end
 
-    if algorithm_mst == prim
-        for node in nodes(A)
-            if parent(node) != node
+
+    for node in nodes(A)
+        if parent(node) != node
                 add_children!(parent(node), node)
-            end
         end
     end
+
 
     ordre_noeud = parcours_preodre_iter(racine)
     println(" ")
