@@ -1,3 +1,5 @@
+include("stack.jl")
+
 function parcours_preodre(n :: Union{AbstractNode, Nothing})
     nom = name(n)
     print("$nom ")
@@ -11,4 +13,23 @@ function parcours_preodre(n :: Union{AbstractNode, Nothing})
             parcours_preodre(children(n)[j])
         end
     end
+    return
+end
+
+function parcours_preodre_iter(n :: Union{AbstractNode, Nothing})
+    root = n
+    node_stack = Stack{Node}()
+    push!(node_stack, n)
+    node_visit = Vector{Node}()
+
+    while length(node_stack) > 0
+        current = pop!(node_stack)
+        print("$(name(current)) ")
+        push!(node_visit, current)
+
+        for child in children(current)
+            push!(node_stack, child)
+        end
+    end
+    return node_visit
 end
