@@ -13,7 +13,7 @@ function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
     for i = 1 : length(edges(A))
         node_1 = ordre_noeud[i]
         node_2 = ordre_noeud[i+1]
-        for edge in edges(A)
+        for edge in edges(G)
             if (edge.node1 == node_1 && edge.node2 == node_2) || (edge.node2 == node_1 && edge.node1 == node_2)
                 poids_tournee += weight(edge)
             end
