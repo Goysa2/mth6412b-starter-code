@@ -14,24 +14,23 @@ Exemple:
 
 """
 mutable struct Node{T} <: AbstractNode{T}
-    name :: String
-    data :: T
-    min_weight :: Int
-    parent :: Union{Nothing, AbstractNode}
-	left :: Union{Nothing, AbstractNode}
-	right :: Union{Nothing, AbstractNode}
-    root :: Union{Nothing, AbstractNode}
-    rang :: Int
+    name 		:: String
+    data 		:: T
+    min_weight 	:: Int
+    parent 		:: Union{Nothing, AbstractNode}
+	root 		:: Union{Nothing, AbstractNode}
+	children 	:: Vector
+    rang 		:: Int
 end
 
 """Constructeur"""
 function Node()
-    return Node("", nothing, typemax(Int), nothing, nothing, nothing, nothing, 0)
+    return Node("", nothing, typemax(Int), nothing, nothing, Vector(), 0)
 end
 
 """Constructeur"""
 function Node(s :: String, d :: T) where T
-    a = Node(s, d, typemax(Int), nothing, nothing, nothing, nothing, 0)
+    a = Node(s, d, typemax(Int), nothing, nothing, Vector(), 0)
     set_parent!(a, a)
     set_root!(a, a)
     return a
@@ -45,12 +44,6 @@ end
 """Affiche le parent d'un noeud"""
 parent(n :: AbstractNode) = n.parent
 
-"""Affiche l'enfant de gauche d'un noeud"""
-left(n :: Node) = n.left
-
-"""Affiche l'enfant de doite d'un noeud"""
-right(n :: Node) = n.right
-
 """Renvoie la racine"""
 root(n :: Node) = n.root
 
@@ -59,14 +52,14 @@ function set_parent!(n :: AbstractNode, p :: AbstractNode)
     n.parent = p
 end
 
-"""Modifie l'enfant de gauche d'un noeud"""
-function set_left!(n :: Node, l :: Node)
-    n.left = l
+"Montre les enfants d'un noeud"
+function children(n:: Node)
+	return n.children
 end
 
-"""Modifie l'enfant de droite d'un noeud"""
-function set_right!(n :: Node, d :: Node)
-    n.right = d
+"Ajoute un enfant à un noeud"
+function add_children!(n :: Node, e :: Node)
+	push!(n.children, e)
 end
 
 """Désigne la racine d'une composante"""
@@ -98,7 +91,7 @@ min_weight(node :: AbstractNode) = node.min_weight
 
 """Affiche un noeud"""
 function show(node::AbstractNode)
-    print("Node $(name(node)) data: $(data(node)) parent = $(name(parent(node))) root = $(name(root(node)))\n")
+    print("Node $(name(node)) data: $(data(node)) parent = $(name(parent(node))) root = $(name(root(node)))  children = $(name.(children(node)))\n")
 
 end
 
