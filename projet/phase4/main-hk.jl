@@ -26,6 +26,7 @@ include("hk.jl")
 
 # On cherche une tournée minimale et son poids
 println("le 1-tree donné par les deux premières étapes de HK est: ")
-A = hk(G);
+A, w, W, d = hk(G)#; algorithm_mst = prim);
 show(A)
+println("on a wᵏ = $w et W = $W et d = $d")
 println("Fin!")
