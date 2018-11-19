@@ -160,3 +160,14 @@ function edges_adj(G :: AbstractGraph, W :: AbstractGraph)
 	end
 	return edge_adjacentes
 end
+
+"""Fonction pour calculé le degré d'un noeud n dans un graph G"""
+function degree(n :: AbstractNode, G :: AbstractGraph)
+	degre = 0
+	for edge in edges(G)
+		if (!is_loop(edge)) && ((edge.node1 == n) || (edge.node2 == n))
+			degre += 1
+		end
+	end
+	return degre
+end
