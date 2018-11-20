@@ -16,7 +16,7 @@ Exemple:
 mutable struct Node{T} <: AbstractNode{T}
     name 		:: String
     data 		:: T
-    min_weight 	:: Int
+    min_weight 	:: Real
     parent 		:: Union{Nothing, AbstractNode}
 	root 		:: Union{Nothing, AbstractNode}
 	children 	:: Vector
@@ -38,7 +38,7 @@ end
 
 
 """Modifier l'attribut min_weight d'un noeud"""
-function set_min_weight!(n :: AbstractNode, w :: Int)
+function set_min_weight!(n :: AbstractNode, w :: Real)
     n.min_weight = w
 end
 
