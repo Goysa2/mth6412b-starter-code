@@ -18,10 +18,10 @@ function kruskal2(G :: Graph{T}) where T
     while e_cpt < length(nodes_graph) - 1
         edge = edges_graph[k];
         compression_chemin!(edge.node1); compression_chemin!(edge.node2);
-        edge.node1 = root(edge.node1); edge.node2 = root(edge.node2);
-        if (root(edge.node1) != root(edge.node2)) #i.e s'ils sont dans deux composantes différentes
+        x = root(edge.node1); y = root(edge.node2);
+        if (root(x) != root(y)) #i.e s'ils sont dans deux composantes différentes
             add_edge!(G2, edge)
-            union_rang(edge.node1, edge.node2)
+            union_rang(x, y)
             e_cpt += 1
         end
         for node in nodes_graph
