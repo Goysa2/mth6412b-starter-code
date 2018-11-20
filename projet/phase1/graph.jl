@@ -171,3 +171,12 @@ function degree(n :: AbstractNode, G :: AbstractGraph)
 	end
 	return degre
 end
+
+
+"""Fonction pour que chaque noeud d'un graphe soit son propre parent et sa propre racine"""
+function reset!(G :: AbstractGraph)
+	for node in nodes(G)
+		set_parent!(node, node)
+		set_root!(node, node)
+	end
+end
