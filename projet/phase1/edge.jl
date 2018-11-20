@@ -30,6 +30,12 @@ nodes(edge :: AbstractEdge) = (edge.node1, edge.node2)
 """Renvoie le poid d'une arête"""
 weight(edge :: AbstractEdge) = edge.weight
 
+"""Modifie le poids d'une arête"""
+function set_weight!(edge :: Edge, poids :: Real)
+	edge.weight = poids
+	edge
+end
+
 # Fonction ajouter à la phase 2
 """Fonction qui détermine si un arête vers d'un sommet vers lui-même"""
 function is_loop(edge :: Edge{T}) where T
