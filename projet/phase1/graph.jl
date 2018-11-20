@@ -178,5 +178,6 @@ function reset!(G :: AbstractGraph)
 	for node in nodes(G)
 		set_parent!(node, node)
 		set_root!(node, node)
+		set_min_weight!(node, typemax(Int))
 	end
 end
