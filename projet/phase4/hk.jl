@@ -14,22 +14,28 @@ sort!(edges_graph_init, by = x -> x.weight)
 
 # 0. On définit les variables qui ne sont seulement dans le "scope" du while
 Tᵏ = nothing; tᵏ = nothing; wᵏ = nothing; dᵏ = nothing
+edges_graph = Dict([((name(edges_graph_init[1].node1),name(edges_graph_init[1].node2)), weight(edges_graph_init[1]))])
+for edge in edges_graph_init
+    temp_Dict = Dict([((name(edge.node1),name(edge.node2)), weight(edge))])
+    edges_graph = merge!(edges_graph, temp_Dict)
+end
 
 # 1. On établie les variables nécessaires aux long de l'algorithme
 k = 0
 n = length(nodes_graph_init)
 πᵏ = zeros(n)
 W = -Inf
-vᵏ = Inf # on doit l'initialiser à une certaine valeur. Autant bien prendre
-         # la plus grand possible.
+vᵏ = Inf * ones(n) # on doit l'initialiser à une certaine valeur.
+                   # Autant bien prendre la plus grand possible.
 
-while (k < 100) && (false in (vᵏ .== 0))
+while (k < 1) && (false in (vᵏ .== 0))
     # 2. On construit un 1-tree minimum Tᵏ
     # 2.1: on enlève le noeud 1 du graphe
     n_rand = rand(1:n)
-    source = nodes_graph_init[1]
-    # nodes_G2 = vcat(nodes_graph_init[1:n_rand-1], nodes_graph_init[n_rand+1:end])
-    nodes_G2 = nodes_graph_init[2:end]
+    source = nodes_graph_init[n_rand]
+    !(n_rand in [1.0, n])  && (nodes_G2 = vcat(nodes_graph_init[1:n_rand-1], nodes_graph_init[n_rand+1:end]))
+    n_rand == 1 && (nodes_G2 = nodes_graph_init[2:end])
+    n_rand == n && (nodes_G2 = nodes_graph_init[1:end-1])
     G2 = Graph("Graph tmp", nodes_G2, Vector{Edge{T}}())
     for edge in edges_graph_init
         if ((edge.node1 != source) && (edge.node2 != source)) && !(edge in edges(G2)) && !(is_loop(edge))
@@ -40,9 +46,9 @@ while (k < 100) && (false in (vᵏ .== 0))
     # 2.2: On cherche le MST de ce nouveau graph
     Tᵏ = algorithm_mst(G2)
 
-    # 2.3: On s'assure que les sommets du graphe G2 puissent être utilisées à
+    # 2.3: On s'assure que les sommets du graphe G puissent être utilisées à
     #      nouveau dans un autre appel à kruskal2 ou prim
-    reset!(G2)
+    reset!(G)
 
     # 2.4: On rajoute deux arêtes pour créer un cycle et ainsi avoir notre 1-tree
     new_edge = 0; cmpt_edge = 1
@@ -90,7 +96,8 @@ while (k < 100) && (false in (vᵏ .== 0))
     for edge in edges_graph_init
         n₁ = parse(Int, name(edge.node1))
         n₂ = parse(Int, name(edge.node2))
-        poids = weight(edge)
+        clef = (name(edge.node1), name(edge.node2))
+        poids = edges_graph[clef]
         set_weight!(edge, poids + πᵏ[n₁] + πᵏ[n₂])
     end
 
