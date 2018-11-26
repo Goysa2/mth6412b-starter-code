@@ -5,14 +5,6 @@ include("../phase1/main.jl")
 include("../phase3/priority_item.jl")
 include("../phase3/queue.jl")
 
-
-
-# Si on veut tester avec l'exemple du cours
-# include("../phase1/node.jl")
-# include("../phase1/edge.jl")
-# include("../phase1/graph.jl")
-# include("../phase2/exemple-laboratoire.jl")
-
 # On va chercher l'algorithme de Kruskal
 include("../phase2/kruskal2.jl")
 
