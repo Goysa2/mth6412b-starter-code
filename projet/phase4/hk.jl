@@ -13,6 +13,7 @@ edges_graph_init = edges(G)
 sort!(edges_graph_init, by = x -> x.weight)
 
 # 0. On définit les variables qui ne sont seulement dans le "scope" du while
+poids_tournee = nothing # poids de la tournée finale
 Tᵏ = nothing; tᵏ = nothing; wᵏ = Inf; wᵏ⁻¹ = Inf; Lᵏ = Inf
 edges_graph = Dict([((name(edges_graph_init[1].node1),name(edges_graph_init[1].node2)), weight(edges_graph_init[1]))])
 for edge in edges_graph_init
@@ -21,24 +22,18 @@ for edge in edges_graph_init
 end
 
 # 1. On établie les variables nécessaires aux long de l'algorithme
-k = 0
-n = length(nodes_graph_init)
-πᵏ = zeros(n); dᵏ = zeros(n)
-W = -Inf
-Wprec = -Inf
+k = 0; n = length(nodes_graph_init); πᵏ = zeros(n); dᵏ = zeros(n)
+W = -Inf; Wprec = -Inf
 vᵏ = NaN * zeros(n) # on doit l'initialiser à une certaine valeur.
 # dᵏ = NaN * zeros(n)
 norm_obj = norm(2*ones(n))
-periode = 1
-duree_periode = n/2
-double_period = false
+periode = 1; duree_periode = n/2; double_period = false;
 
-while (k == 0) || ((k < 1_000) && (norm(tᵏ) > 1e-06) && (duree_periode != 0) && (vᵏ != zeros(n)))
-    # @show k
-
+while (k == 0) || ((k < 10_000) && (norm(tᵏ) > 1e-06) && (duree_periode != 0) && (vᵏ != zeros(n)))
     # Avant toute chose on doit "reset" G, on veut que chaque noeud redevienne
     # son propre parent et sa propre racine pour pouvoir faire kruskal2 ou prim
     reset!(G)
+
     # 2. On construit un 1-tree minimum Tᵏ
     # 2.1: on enlève le noeud 1 du graphe
     n_rand = rand(1:n)
@@ -113,6 +108,11 @@ while (k == 0) || ((k < 1_000) && (norm(tᵏ) > 1e-06) && (duree_periode != 0) &
     @. πᵏ .= πᵏ .+ tᵏ .* vᵏ
 
     # 8.1 On met à jour le poids des arêtes avec le nouveau vecteur πᵏ
+    #     On note qu'on doit utiliser le poids initial des arêtes. En effet,
+    #     dij = cij + πi + πj, selon l'article cité plus haut. Je suppose que
+    #     cij réfère au poids initial. Quand on modifie les poids "dynamiquement"
+    #     on obtient de très mauvais résultats.
+
     for edge in edges_graph_init
         n₁ = parse(Int, name(edge.node1))
         n₂ = parse(Int, name(edge.node2))
@@ -132,17 +132,58 @@ while (k == 0) || ((k < 1_000) && (norm(tᵏ) > 1e-06) && (duree_periode != 0) &
     k += 1
 
 end #while
-
+ordre_noeud = nothing
 if (vᵏ == zeros(n))
     printstyled("L'algorithme produit une tournée \n", color = :green)
+    poids_tournee = w_tot_edges(Tᵏ)
 else
-    printstyled("L'algorithme ne produit pas une tournée. \n", color = :yellow)
-    printstyled("On parcours les noeuds en post-ordre pour \n", color = :yellow)
-    printstyled("produire une tournée à partir du dernier \n", color = :yellow)
-    printstyled("1-tree obtenu \n", color = :yellow)
+    # printstyled("L'algorithme ne produit pas une tournée. \n", color = :yellow)
+    # printstyled("On parcours les noeuds en post-ordre pour \n", color = :yellow)
+    # printstyled("produire une tournée à partir du dernier \n", color = :yellow)
+    # printstyled("1-tree obtenu \n", color = :yellow)
+    racine = nodes(Tᵏ)[1]
+    while root(racine) != racine
+        racine = root(racine)
+    end
+    for node in nodes(Tᵏ)
+        if parent(node) != node
+            add_children!(parent(node), node)
+        end
+    end
+    ordre_noeud = parcours_preodre_iter(racine)
+    println(" ")
+    poids_tournee = 0
+    for i = 1 : length(edges(Tᵏ))-1
+        node_1 = ordre_noeud[i]
+        node_2 = ordre_noeud[i+1]
+        for edge in edges_graph_init
+            n₁ = parse(Int, name(edge.node1))
+            n₂ = parse(Int, name(edge.node2))
+            clef = (name(edge.node1), name(edge.node2))
+            poids = edges_graph[clef]
+            set_weight!(edge, poids)
+            if (edge.node1 == node_1 && edge.node2 == node_2) || (edge.node2 == node_1 && edge.node1 == node_2)
+                poids_tournee += weight(edge)
+                break
+            end
+        end
+    end
+
+    node_1 = ordre_noeud[1]
+    node_end = ordre_noeud[end]
+    for edge in edges_graph_init
+        n₁ = parse(Int, name(edge.node1))
+        n₂ = parse(Int, name(edge.node2))
+        clef = (name(edge.node1), name(edge.node2))
+        poids = edges_graph[clef]
+        set_weight!(edge, poids)
+        if (edge.node1 == node_1 && edge.node2 == node_end) || (edge.node2 == node_1 && edge.node1 == node_end)
+            poids_tournee += weight(edge)
+            break
+        end
+    end
 end
 
-return Tᵏ, wᵏ, W, dᵏ, vᵏ, tᵏ, πᵏ # valeur de retour temporaire, pour s'assurer que chaque étape fonctionne
-          # présentement les étapes 1 et deux fonctionnent
+return Tᵏ, poids_tournee, ordre_noeud # valeur de retour temporaire, pour s'assurer que chaque étape fonctionne
 
 end # function
