@@ -5,11 +5,13 @@ function prim(G :: Graph{T}) where T
     edges_graph = edges(G)
     nodes_graph = nodes(G)
 
-    noeud_source = nodes_graph[1]
+    n = length(nodes_graph)
+    n_rand = rand(1:n)
+    noeud_source = nodes_graph[n_rand]
     set_min_weight!(noeud_source, 0)
     file_de_priorite = PriorityQueue{AbstractNode}()
-    for node in nodes_graph[2:end]
-        push!(file_de_priorite, node)
+    for node in nodes_graph
+        (node != noeud_source) && push!(file_de_priorite, node)
     end
 
     # arbre de recouvrement minimal
