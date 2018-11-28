@@ -154,9 +154,11 @@ else
     println(" ")
     poids_tournee = 0
     for i = 1 : length(edges(Tᵏ))-1
-        node_1 = ordre_noeud[i]
-        node_2 = ordre_noeud[i+1]
-        for edge in edges_graph_init
+        node_1 = ordre_noeud[i]; node_2 = ordre_noeud[i+1]
+        edge_cpt = 1; new_weight = false
+        # for edge in edges_graph_init
+        while !new_weight
+            edge = edges(G)[edge_cpt]
             n₁ = parse(Int, name(edge.node1))
             n₂ = parse(Int, name(edge.node2))
             clef = (name(edge.node1), name(edge.node2))
@@ -164,14 +166,17 @@ else
             set_weight!(edge, poids)
             if (edge.node1 == node_1 && edge.node2 == node_2) || (edge.node2 == node_1 && edge.node1 == node_2)
                 poids_tournee += weight(edge)
-                break
+                new_weight = true
             end
+            edge_cpt += 1
         end
     end
 
-    node_1 = ordre_noeud[1]
-    node_end = ordre_noeud[end]
-    for edge in edges_graph_init
+    node_1 = ordre_noeud[1]; node_end = ordre_noeud[end]
+    edge_cpt = 1; final_edge = false
+    # for edge in edges_graph_init
+    while !final_edge
+        edge = edges(G)[edge_cpt]
         n₁ = parse(Int, name(edge.node1))
         n₂ = parse(Int, name(edge.node2))
         clef = (name(edge.node1), name(edge.node2))
@@ -179,8 +184,9 @@ else
         set_weight!(edge, poids)
         if (edge.node1 == node_1 && edge.node2 == node_end) || (edge.node2 == node_1 && edge.node1 == node_end)
             poids_tournee += weight(edge)
-            break
+            final_edge = true
         end
+        edge_cpt += 1
     end
 end
 
