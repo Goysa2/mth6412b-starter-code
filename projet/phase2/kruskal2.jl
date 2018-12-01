@@ -30,11 +30,5 @@ function kruskal2(G :: Graph{T}) where T
         k += 1
     end # while
 
-    for node in nodes(G2)
-        for child in children(node)
-            set_parent!(child, node)
-        end
-    end
-
     return G2
 end
