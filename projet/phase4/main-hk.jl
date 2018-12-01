@@ -22,8 +22,7 @@ include("step_size.jl")
 include("hk.jl")
 
 # On cherche une tournée minimale et son poids
-# println("la tournée obtenu par l'algo HK est: ")
-# A, w, W, d, v, t, π1, poids = hk(G, step_size = period_step_size);
-A, poids, ordre = hk(G, step_size = period_step_size, algorithm_mst = prim);
-# println("son poids est: $poids")
-# println("Fin!")
+println("la tournée obtenu par l'algo HK est: ")
+A, poids, ordre = hk(G, step_size = period_step_size);
+println("son poids est: $poids")
+println("Fin!")

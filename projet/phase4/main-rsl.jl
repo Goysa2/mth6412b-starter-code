@@ -20,6 +20,6 @@ include("rsl.jl")
 
 # On cherche une tournée minimale et son poids
 println("la tournée donnée par l'algorithme RSL est: ")
-A, poids = rsl(G; algorithm_mst = prim);
+A, poids = rsl(G);
 println("le poids de la tournée est $poids")
 println("Fin!")
