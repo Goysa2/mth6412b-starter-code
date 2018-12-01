@@ -137,10 +137,10 @@ if (vᵏ == zeros(n))
     printstyled("L'algorithme produit une tournée \n", color = :green)
     poids_tournee = w_tot_edges(Tᵏ)
 else
-    # printstyled("L'algorithme ne produit pas une tournée. \n", color = :yellow)
-    # printstyled("On parcours les noeuds en post-ordre pour \n", color = :yellow)
-    # printstyled("produire une tournée à partir du dernier \n", color = :yellow)
-    # printstyled("1-tree obtenu \n", color = :yellow)
+    printstyled("L'algorithme ne produit pas une tournée. \n", color = :yellow)
+    printstyled("On parcours les noeuds en post-ordre pour \n", color = :yellow)
+    printstyled("produire une tournée à partir du dernier \n", color = :yellow)
+    printstyled("1-tree obtenu \n", color = :yellow)
     racine = nodes(Tᵏ)[1]
     while root(racine) != racine
         racine = root(racine)

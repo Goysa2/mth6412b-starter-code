@@ -1,3 +1,4 @@
+"""Algorithme de RSL"""
 function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
     A = algorithm_mst(G)
     n = length(nodes(A))

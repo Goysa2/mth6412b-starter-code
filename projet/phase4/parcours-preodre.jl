@@ -1,5 +1,6 @@
 include("stack.jl")
 
+"""Parcours en pré-ordre récursif"""
 function parcours_preodre(n :: Union{AbstractNode, Nothing})
     nom = name(n)
     print("$nom ")
@@ -16,6 +17,7 @@ function parcours_preodre(n :: Union{AbstractNode, Nothing})
     return
 end
 
+"""Parcours en préordre itératif"""
 function parcours_preodre_iter(n :: Union{AbstractNode, Nothing})
     root = n
     node_stack = Stack{Node}()
