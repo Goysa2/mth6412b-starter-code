@@ -1,6 +1,7 @@
 using ImageMagick
 using Random, FileIO, Images, ImageView
 
+
 """Compute the similarity score between two pixels."""
 function compare_pixels(p1, p2)
 	r1, g1, b1 = red(p1), green(p1), blue(p1)
@@ -80,7 +81,6 @@ function reconstruct_picture(tour_filename::String, input_name::String, output_n
 	end
 	close(file)
 	shuffled_picture = load(input_name)
-	printstyled("on est ici !!! \n", color = :yellow)
 	reconstructed_picture = shuffled_picture[:,tour[2:end]]
 	view && imshow(reconstructed_picture)
 	save(output_name, reconstructed_picture)

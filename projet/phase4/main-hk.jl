@@ -23,6 +23,6 @@ include("hk.jl")
 
 # On cherche une tournée minimale et son poids
 println("la tournée obtenu par l'algo HK est: ")
-A, poids, ordre = hk(G, step_size = period_step_size);
+A, poids, ordre = hk(G, step_size = cst_decrease_sqrt);
 println("son poids est: $poids")
 println("Fin!")

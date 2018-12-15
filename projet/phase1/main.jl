@@ -16,6 +16,7 @@ file = "../../instances/stsp/bayg29.tsp"
 # file = "../../instances/stsp/gr120.tsp"
 # file = "../../instances/stsp/pa561.tsp" #!!!
 
+
 ### On va chercher l'information utilisable des fichiers tsp grace à la fonction
 ### read_stsp. On va ensuite convertir cette information pour quelle soit utilisable
 ### par la classe graphe
@@ -42,19 +43,19 @@ end
 ### 2) Sinon on a une structure plus simple: la composante (i,j) de edges_init
 ###    représente l'arête reliant les sommets i et j. Dans un tel cas, on a
 ###    qu'à parcourir tout les éléments de la matrice. On utilise le second if.
-for i = 1:length(edges_init)
-    edge = edges_init[i]
-    if edges_init[i][1][1] > 1
-        for j = i:length(edges_init)
-            push!(edges_graph, Edge(nodes_graph[i], nodes_graph[j+1], edge[j-i+1][2]))
-        end
-    elseif edges_init[i][1][1] == 1
-        for j = 1:length(edges_init[i])
-            push!(edges_graph, Edge(nodes_graph[i], nodes_graph[j], edge[j][2]))
-        end
-
-    end
-end
+# for i = 1:length(edges_init)
+#     edge = edges_init[i]
+#     if edges_init[i][1][1] > 1
+#         for j = i:length(edges_init)
+#             push!(edges_graph, Edge(nodes_graph[i], nodes_graph[j+1], edge[j-i+1][2]))
+#         end
+#     elseif edges_init[i][1][1] == 1
+#         for j = 1:length(edges_init[i])
+#             push!(edges_graph, Edge(nodes_graph[i], nodes_graph[j], edge[j][2]))
+#         end
+#
+#     end
+# end
 
 
 G = Graph("[insert graph name here]", nodes_graph, edges_graph);

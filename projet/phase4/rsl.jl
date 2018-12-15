@@ -43,5 +43,5 @@ function rsl(G :: Graph; algorithm_mst :: Function = kruskal2)
         edge_cpt += 1
     end
 
-return A, poids_tournee
+return A, poids_tournee, ordre_noeud
 end #function
